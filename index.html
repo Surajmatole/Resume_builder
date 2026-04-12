@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AI Resume & Portfolio Builder — Create professional resumes and stunning portfolios in minutes. Fill out a simple form and let AI do the rest.">
+    <meta name="keywords" content="resume builder, portfolio generator, AI resume, professional CV, online portfolio">
+    <title>AI Resume & Portfolio Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo" id="nav-logo">
+                <i class="fas fa-bolt"></i>
+                <span>ResumeAI</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+                <li><a href="#features" class="nav-link" data-section="features">Features</a></li>
+                <li><a href="#builder" class="nav-link" data-section="builder">Builder</a></li>
+                <li><a href="#templates" class="nav-link" data-section="templates">Templates</a></li>
+            </ul>
+            <button class="nav-cta" id="nav-cta-btn" onclick="scrollToSection('builder')">
+                <i class="fas fa-rocket"></i> Build Resume
+            </button>
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero" id="home">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="grid-overlay"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge animate-fade-in">
+                    <i class="fas fa-sparkles"></i>
+                    <span>Powered by AI</span>
+                </div>
+                <h1 class="hero-title animate-fade-in-up">
+                    Build Your Dream<br>
+                    <span class="gradient-text">Resume & Portfolio</span><br>
+                    in Minutes
+                </h1>
+                <p class="hero-subtitle animate-fade-in-up delay-1">
+                    Simply fill in your details in plain English, and our AI transforms them into
+                    a stunning, professional resume and portfolio — ready to download and share.
+                </p>
+                <div class="hero-actions animate-fade-in-up delay-2">
+                    <button class="btn btn-primary btn-lg" onclick="scrollToSection('builder')">
+                        <i class="fas fa-wand-magic-sparkles"></i> Start Building Free
+                    </button>
+                    <button class="btn btn-ghost btn-lg" onclick="scrollToSection('features')">
+                        <i class="fas fa-play-circle"></i> See How It Works
+                    </button>
+                </div>
+                <div class="hero-stats animate-fade-in-up delay-3">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="10000">0</span><span class="stat-suffix">+</span>
+                        <span class="stat-label">Resumes Built</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="50">0</span><span class="stat-suffix">+</span>
+                        <span class="stat-label">Templates</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="98">0</span><span class="stat-suffix">%</span>
+                        <span class="stat-label">Satisfaction</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual animate-fade-in-right delay-2">
+                <div class="resume-preview-card">
+                    <div class="preview-header">
+                        <div class="preview-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <span class="preview-title">resume_preview.pdf</span>
+                    </div>
+                    <div class="preview-body">
+                        <div class="preview-avatar"></div>
+                        <div class="preview-line w-60"></div>
+                        <div class="preview-line w-40 light"></div>
+                        <div class="preview-divider"></div>
+                        <div class="preview-section-title"></div>
+                        <div class="preview-line w-90"></div>
+                        <div class="preview-line w-80"></div>
+                        <div class="preview-line w-70"></div>
+                        <div class="preview-divider"></div>
+                        <div class="preview-section-title"></div>
+                        <div class="preview-skills">
+                            <span class="preview-skill"></span>
+                            <span class="preview-skill"></span>
+                            <span class="preview-skill"></span>
+                            <span class="preview-skill"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FEATURES SECTION ==================== -->
+    <section class="features" id="features">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Features</span>
+                <h2 class="section-title">Everything You Need to<br><span class="gradient-text">Stand Out</span></h2>
+                <p class="section-subtitle">From AI-powered suggestions to beautiful templates, we've got you covered.
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-delay="0">
+                    <div class="feature-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+                    <h3>AI-Powered Writing</h3>
+                    <p>Get intelligent suggestions to enhance your resume content with professional language and
+                        impactful descriptions.</p>
+                </div>
+                <div class="feature-card" data-delay="100">
+                    <div class="feature-icon"><i class="fas fa-palette"></i></div>
+                    <h3>Multiple Templates</h3>
+                    <p>Choose from a variety of stunning, professionally-designed resume templates that suit your
+                        industry and style.</p>
+                </div>
+                <div class="feature-card" data-delay="200">
+                    <div class="feature-icon"><i class="fas fa-file-pdf"></i></div>
+                    <h3>PDF Download</h3>
+                    <p>Generate high-quality, ATS-friendly PDF resumes with one click — ready to send to any employer.
+                    </p>
+                </div>
+                <div class="feature-card" data-delay="300">
+                    <div class="feature-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Portfolio Generator</h3>
+                    <p>Automatically create a beautiful personal portfolio website from the same information you
+                        provide.</p>
+                </div>
+                <div class="feature-card" data-delay="400">
+                    <div class="feature-icon"><i class="fas fa-mobile-screen"></i></div>
+                    <h3>Fully Responsive</h3>
+                    <p>Your resume and portfolio look perfect on any device — desktop, tablet, or mobile phone.</p>
+                </div>
+                <div class="feature-card" data-delay="500">
+                    <div class="feature-icon"><i class="fas fa-pen-to-square"></i></div>
+                    <h3>Live Editing</h3>
+                    <p>See your changes in real-time as you type. Edit, tweak, and perfect your resume before
+                        downloading.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== BUILDER SECTION ==================== -->
+    <section class="builder" id="builder">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Builder</span>
+                <h2 class="section-title">Build Your Resume<br><span class="gradient-text">Step by Step</span></h2>
+                <p class="section-subtitle">Fill in your details and watch the magic happen.</p>
+            </div>
+
+            <!-- Step Progress Bar -->
+            <div class="step-progress">
+                <div class="step-progress-bar">
+                    <div class="step-progress-fill" id="step-progress-fill"></div>
+                </div>
+                <div class="step-indicators">
+                    <button class="step-indicator active" data-step="1" id="step-ind-1">
+                        <span class="step-number">1</span>
+                        <span class="step-label">Personal</span>
+                    </button>
+                    <button class="step-indicator" data-step="2" id="step-ind-2">
+                        <span class="step-number">2</span>
+                        <span class="step-label">Education</span>
+                    </button>
+                    <button class="step-indicator" data-step="3" id="step-ind-3">
+                        <span class="step-number">3</span>
+                        <span class="step-label">Experience</span>
+                    </button>
+                    <button class="step-indicator" data-step="4" id="step-ind-4">
+                        <span class="step-number">4</span>
+                        <span class="step-label">Skills</span>
+                    </button>
+                    <button class="step-indicator" data-step="5" id="step-ind-5">
+                        <span class="step-number">5</span>
+                        <span class="step-label">Projects</span>
+                    </button>
+                    <button class="step-indicator" data-step="6" id="step-ind-6">
+                        <span class="step-number">6</span>
+                        <span class="step-label">More</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Form Steps -->
+            <div class="form-wrapper">
+                <form id="resume-form" autocomplete="off">
+                    <!-- Step 1: Personal Info -->
+                    <div class="form-step active" id="form-step-1">
+                        <div class="form-step-header">
+                            <div class="form-step-icon"><i class="fas fa-user"></i></div>
+                            <h3>Personal Information</h3>
+                            <p>Let's start with the basics about you.</p>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="fullName">Full Name <span class="required">*</span></label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-user input-icon"></i>
+                                    <input type="text" id="fullName" name="fullName" placeholder="e.g. Suraj Matole"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="jobTitle">Job Title / Headline <span class="required">*</span></label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-briefcase input-icon"></i>
+                                    <input type="text" id="jobTitle" name="jobTitle"
+                                        placeholder="e.g. Full Stack Developer" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email <span class="required">*</span></label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-envelope input-icon"></i>
+                                    <input type="email" id="email" name="email" placeholder="e.g. Suraj@example.com"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-phone input-icon"></i>
+                                    <input type="tel" id="phone" name="phone" placeholder="e.g. +1 234 567 890">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Location</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-location-dot input-icon"></i>
+                                    <input type="text" id="location" name="location"
+                                        placeholder="e.g. Pune, Maharashtra">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="website">Website / LinkedIn</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-link input-icon"></i>
+                                    <input type="url" id="website" name="website"
+                                        placeholder="e.g. https://linkedin.com/in/surajmatole">
+                                </div>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="summary">Professional Summary</label>
+                                <div class="input-wrapper textarea-wrapper">
+                                    <i class="fas fa-align-left input-icon"></i>
+                                    <textarea id="summary" name="summary" rows="4"
+                                        placeholder="Write a brief summary about yourself, your experience, and what you bring to the table..."></textarea>
+                                    <button type="button" class="ai-suggest-btn" onclick="aiSuggest('summary')"
+                                        title="Get AI Suggestion">
+                                        <i class="fas fa-wand-magic-sparkles"></i> AI Enhance
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Education -->
+                    <div class="form-step" id="form-step-2">
+                        <div class="form-step-header">
+                            <div class="form-step-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <h3>Education</h3>
+                            <p>Tell us about your educational background.</p>
+                        </div>
+                        <div id="education-entries">
+                            <div class="entry-card" data-index="0">
+                                <div class="entry-header">
+                                    <span class="entry-badge">Education #1</span>
+                                    <button type="button" class="entry-remove hidden"
+                                        onclick="removeEntry(this, 'education')">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label>Degree <span class="required">*</span></label>
+                                        <div class="input-wrapper">
+                                            <i class="fas fa-award input-icon"></i>
+                                            <input type="text" name="edu_degree[]"
+                                                placeholder="e.g. B.Tech in Computer Science">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Institution <span class="required">*</span></label>
+                                        <div class="input-wrapper">
+                                            <i class="fas fa-building-columns input-icon"></i>
+                                            <input type="text" name="edu_institution[]" placeholder="e.g. MIT">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Year</label>
+                                        <div class="input-wrapper">
+                                            <i class="fas fa-calendar input-icon"></i>
+                                            <input type="text" name="edu_year[]" placeholder="e.g. 2020 - 2024">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Grade / CGPA</label>
+                                        <div class="input-wrapper">
+                                            <i class="fas fa-star input-icon"></i>
+                                            <input type="text" name="edu_grade[]" placeholder="e.g. 9.5 / 10">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-outline add-entry-btn" onclick="addEducation()">
+                            <i class="fas fa-plus"></i> Add Another Education
+                        </button>
+                    </div>
+
+                    <!-- Step 3: Experience -->
+                    <div class="form-step" id="form-step-3">
+                        <div class="form-step-header">
+                            <div class="form-step-icon"><i class="fas fa-briefcase"></i></div>
+                            <h3>Work Experience</h3>
+                            <p>Add your work experience, internships, or freelance work.</p>
+                        </div>
+                        <div id="experience-entries">
+                            <div class="entry-card" data-index="0">
+                                <div class="entry-header">
+                                    <span class="entry-badge">Experience #1</span>
+                                    <button type="button" class="entry-remove hidden"
+                                        onclick="removeEntry(this, 'experience')">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label>Job Title</label>
+                                        <div class="input-wrapper">
+                                            <i class="fas fa-id-badge input-icon"></i>
+                                            <input type="text" name="exp_title[]" placeholder="e.g. Frontend Developer">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Company</label>
+                                        <div class="input-wrapper">
+                                            <i class="fas fa-building input-icon"></i>
+                                            <input type="text" name="exp_company[]" placeholder="e.g. Google">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Duration</label>
+                                        <div class="input-wrapper">
+                                            <i class="fas fa-calendar-days input-icon"></i>
+                                            <input type="text" name="exp_duration[]"
+                                                placeholder="e.g. Jan 2023 - Present">
+                                        </div>
+                                    </div>
+                                    <div class="form-group full-width">
+                                        <label>Description</label>
+                                        <div class="input-wrapper textarea-wrapper">
+                                            <i class="fas fa-align-left input-icon"></i>
+                                            <textarea name="exp_description[]" rows="3"
+                                                placeholder="Describe your responsibilities, achievements, and technologies used..."></textarea>
+                                            <button type="button" class="ai-suggest-btn"
+                                                onclick="aiSuggestExperience(this)" title="Get AI Suggestion">
+                                                <i class="fas fa-wand-magic-sparkles"></i> AI Enhance
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-outline add-entry-btn" onclick="addExperience()">
+                            <i class="fas fa-plus"></i> Add Another Experience
+                        </button>
+                    </div>
+
+                    <!-- Step 4: Skills -->
+                    <div class="form-step" id="form-step-4">
+                        <div class="form-step-header">
+                            <div class="form-step-icon"><i class="fas fa-code"></i></div>
+                            <h3>Skills & Technologies</h3>
+                            <p>List your technical and soft skills.</p>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label for="technicalSkills">Technical Skills</label>
+                                <div class="input-wrapper textarea-wrapper">
+                                    <i class="fas fa-laptop-code input-icon"></i>
+                                    <textarea id="technicalSkills" name="technicalSkills" rows="3"
+                                        placeholder="e.g. JavaScript, React, Node.js, Python, SQL, AWS, Docker, Git..."></textarea>
+                                </div>
+                                <span class="form-hint">Separate each skill with a comma</span>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="softSkills">Soft Skills</label>
+                                <div class="input-wrapper textarea-wrapper">
+                                    <i class="fas fa-people-group input-icon"></i>
+                                    <textarea id="softSkills" name="softSkills" rows="3"
+                                        placeholder="e.g. Leadership, Communication, Problem-solving, Team Collaboration..."></textarea>
+                                </div>
+                                <span class="form-hint">Separate each skill with a comma</span>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="languages">Languages</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-language input-icon"></i>
+                                    <input type="text" id="languages" name="languages"
+                                        placeholder="e.g. English (Fluent), Spanish (Intermediate), French (Basic)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Projects -->
+                    <div class="form-step" id="form-step-5">
+                        <div class="form-step-header">
+                            <div class="form-step-icon"><i class="fas fa-diagram-project"></i></div>
+                            <h3>Projects</h3>
+                            <p>Showcase your best work and side projects.</p>
+                        </div>
+                        <div id="project-entries">
+                            <div class="entry-card" data-index="0">
+                                <div class="entry-header">
+                                    <span class="entry-badge">Project #1</span>
+                                    <button type="button" class="entry-remove hidden"
+                                        onclick="removeEntry(this, 'project')">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label>Project Name</label>
+                                        <div class="input-wrapper">
+                                            <i class="fas fa-folder-open input-icon"></i>
+                                            <input type="text" name="proj_name[]"
+                                                placeholder="e.g. E-Commerce Platform">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tech Stack</label>
+                                        <div class="input-wrapper">
+                                            <i class="fas fa-layer-group input-icon"></i>
+                                            <input type="text" name="proj_tech[]"
+                                                placeholder="e.g. React, Node.js, MongoDB">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Project Link</label>
+                                        <div class="input-wrapper">
+                                            <i class="fas fa-external-link input-icon"></i>
+                                            <input type="url" name="proj_link[]"
+                                                placeholder="e.g. https://github.com/...">
+                                        </div>
+                                    </div>
+                                    <div class="form-group full-width">
+                                        <label>Description</label>
+                                        <div class="input-wrapper textarea-wrapper">
+                                            <i class="fas fa-align-left input-icon"></i>
+                                            <textarea name="proj_description[]" rows="3"
+                                                placeholder="Describe what the project does, your role, and the impact..."></textarea>
+                                            <button type="button" class="ai-suggest-btn"
+                                                onclick="aiSuggestProject(this)" title="Get AI Suggestion">
+                                                <i class="fas fa-wand-magic-sparkles"></i> AI Enhance
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-outline add-entry-btn" onclick="addProject()">
+                            <i class="fas fa-plus"></i> Add Another Project
+                        </button>
+                    </div>
+
+                    <!-- Step 6: Certifications & Achievements -->
+                    <div class="form-step" id="form-step-6">
+                        <div class="form-step-header">
+                            <div class="form-step-icon"><i class="fas fa-trophy"></i></div>
+                            <h3>Certifications & Achievements</h3>
+                            <p>Highlight your certifications, awards, and accomplishments.</p>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label for="certifications">Certifications</label>
+                                <div class="input-wrapper textarea-wrapper">
+                                    <i class="fas fa-certificate input-icon"></i>
+                                    <textarea id="certifications" name="certifications" rows="4"
+                                        placeholder="e.g.&#10;AWS Certified Developer - Amazon (2024)&#10;Google Cloud Professional - Google (2023)&#10;React Developer Certification - Meta (2023)"></textarea>
+                                </div>
+                                <span class="form-hint">One certification per line</span>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="achievements">Achievements & Awards</label>
+                                <div class="input-wrapper textarea-wrapper">
+                                    <i class="fas fa-medal input-icon"></i>
+                                    <textarea id="achievements" name="achievements" rows="4"
+                                        placeholder="e.g.&#10;Won 1st place at University Hackathon 2023&#10;Published research paper on ML in IEEE&#10;Open source contributor with 500+ GitHub stars"></textarea>
+                                </div>
+                                <span class="form-hint">One achievement per line</span>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="hobbies">Interests / Hobbies</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-heart input-icon"></i>
+                                    <input type="text" id="hobbies" name="hobbies"
+                                        placeholder="e.g. Open Source, Blogging, Chess, Hiking, Photography">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Navigation -->
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-ghost" id="prev-btn" onclick="prevStep()"
+                            style="visibility: hidden;">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button type="button" class="btn btn-primary" id="next-btn" onclick="nextStep()">
+                            Next Step <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button type="button" class="btn btn-primary btn-glow" id="generate-btn"
+                            onclick="generateResume()" style="display: none;">
+                            <i class="fas fa-wand-magic-sparkles"></i> Generate Resume
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TEMPLATES SECTION ==================== -->
+    <section class="templates-section" id="templates">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Templates</span>
+                <h2 class="section-title">Choose Your<br><span class="gradient-text">Perfect Template</span></h2>
+                <p class="section-subtitle">Select a template that matches your style and industry.</p>
+            </div>
+            <div class="templates-grid">
+                <div class="template-card active" data-template="modern" onclick="selectTemplate('modern')">
+                    <div class="template-preview template-modern-preview">
+                        <div class="tp-sidebar">
+                            <div class="tp-avatar"></div>
+                            <div class="tp-line w-80"></div>
+                            <div class="tp-line w-60 light"></div>
+                            <div class="tp-spacer"></div>
+                            <div class="tp-line w-50"></div>
+                            <div class="tp-line w-90"></div>
+                            <div class="tp-line w-70"></div>
+                        </div>
+                        <div class="tp-main">
+                            <div class="tp-line w-40"></div>
+                            <div class="tp-line w-90 light"></div>
+                            <div class="tp-line w-80 light"></div>
+                            <div class="tp-spacer"></div>
+                            <div class="tp-line w-30"></div>
+                            <div class="tp-line w-90 light"></div>
+                            <div class="tp-line w-70 light"></div>
+                        </div>
+                    </div>
+                    <div class="template-info">
+                        <h4>Modern</h4>
+                        <p>Clean sidebar layout</p>
+                    </div>
+                    <div class="template-check"><i class="fas fa-check-circle"></i></div>
+                </div>
+                <div class="template-card" data-template="classic" onclick="selectTemplate('classic')">
+                    <div class="template-preview template-classic-preview">
+                        <div class="tp-header-bar"></div>
+                        <div class="tp-content">
+                            <div class="tp-line w-50 center"></div>
+                            <div class="tp-line w-80 center light"></div>
+                            <div class="tp-divider"></div>
+                            <div class="tp-line w-30"></div>
+                            <div class="tp-line w-90 light"></div>
+                            <div class="tp-line w-80 light"></div>
+                            <div class="tp-spacer"></div>
+                            <div class="tp-line w-30"></div>
+                            <div class="tp-line w-90 light"></div>
+                        </div>
+                    </div>
+                    <div class="template-info">
+                        <h4>Classic</h4>
+                        <p>Traditional top header</p>
+                    </div>
+                    <div class="template-check"><i class="fas fa-check-circle"></i></div>
+                </div>
+                <div class="template-card" data-template="minimal" onclick="selectTemplate('minimal')">
+                    <div class="template-preview template-minimal-preview">
+                        <div class="tp-content">
+                            <div class="tp-line w-40"></div>
+                            <div class="tp-line w-70 light"></div>
+                            <div class="tp-spacer"></div>
+                            <div class="tp-line-thin"></div>
+                            <div class="tp-spacer"></div>
+                            <div class="tp-line w-20"></div>
+                            <div class="tp-line w-90 light"></div>
+                            <div class="tp-line w-80 light"></div>
+                            <div class="tp-spacer"></div>
+                            <div class="tp-line w-20"></div>
+                            <div class="tp-line w-90 light"></div>
+                        </div>
+                    </div>
+                    <div class="template-info">
+                        <h4>Minimal</h4>
+                        <p>Simple & elegant</p>
+                    </div>
+                    <div class="template-check"><i class="fas fa-check-circle"></i></div>
+                </div>
+                <div class="template-card" data-template="creative" onclick="selectTemplate('creative')">
+                    <div class="template-preview template-creative-preview">
+                        <div class="tp-creative-header">
+                            <div class="tp-avatar-sm"></div>
+                            <div class="tp-creative-info">
+                                <div class="tp-line w-60"></div>
+                                <div class="tp-line w-40 light"></div>
+                            </div>
+                        </div>
+                        <div class="tp-creative-body">
+                            <div class="tp-creative-col">
+                                <div class="tp-line w-50"></div>
+                                <div class="tp-bar"></div>
+                                <div class="tp-bar short"></div>
+                                <div class="tp-bar"></div>
+                            </div>
+                            <div class="tp-creative-col">
+                                <div class="tp-line w-50"></div>
+                                <div class="tp-line w-90 light"></div>
+                                <div class="tp-line w-80 light"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="template-info">
+                        <h4>Creative</h4>
+                        <p>Bold & colorful</p>
+                    </div>
+                    <div class="template-check"><i class="fas fa-check-circle"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== RESUME PREVIEW MODAL ==================== -->
+    <div class="modal-overlay" id="resume-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3><i class="fas fa-file-alt"></i> Resume Preview</h3>
+                <div class="modal-actions">
+                    <button class="btn btn-outline btn-sm" onclick="switchView('resume')" id="view-resume-btn">
+                        <i class="fas fa-file-alt"></i> Resume
+                    </button>
+                    <button class="btn btn-outline btn-sm" onclick="switchView('portfolio')" id="view-portfolio-btn">
+                        <i class="fas fa-globe"></i> Portfolio
+                    </button>
+                    <button class="btn btn-primary btn-sm" onclick="downloadResume()" id="download-resume-btn">
+                        <i class="fas fa-download"></i> Download PDF
+                    </button>
+                    <button class="modal-close" onclick="closeModal()" id="close-modal-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Resume content will be injected here -->
+                <div id="resume-output"></div>
+                <div id="portfolio-output" style="display:none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo">
+                        <i class="fas fa-bolt"></i>
+                        <span>ResumeAI</span>
+                    </a>
+                    <p>Build professional resumes and portfolios with the power of AI. Stand out from the crowd.</p>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Product</h4>
+                    <a href="#features">Features</a>
+                    <a href="#templates">Templates</a>
+                    <a href="#builder">Builder</a>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Resources</h4>
+                    <a href="#">Resume Tips</a>
+                    <a href="#">Career Blog</a>
+                    <a href="#">FAQ</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ResumeAI. All rights reserved.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
